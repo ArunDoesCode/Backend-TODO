@@ -3,9 +3,9 @@ import mongoose from "mongoose";
 export const connectDB = ()=> {
     mongoose.connect(process.env.MONGO_URI, {
 		dbName: "backendapi",
-		useNewUrlParser: true, // Use the new URL parser (prior to Mongoose 6)
+		useNewUrlParser: true, 
 		useUnifiedTopology: true,
 		})
-.then(console.log("Database Connected"))
+.then((c)=>console.log(`Database Connected to ${c.connection.host}`))
 .catch((e) => console.log(e));
 };
