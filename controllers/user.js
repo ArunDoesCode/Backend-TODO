@@ -23,6 +23,7 @@ export const login = async (req, res, next) => {
 };
 
 export const register = async (req, res, next) => {
+	console.log(req.body);
 	try {
 		const { name, email, password } = req.body;
 
@@ -36,6 +37,7 @@ export const register = async (req, res, next) => {
 
 		sendCookie(user, res, "Registered Successfully", 201);
 	} catch (error) {
+		console.log(error);
 		next(error);
 	}
 };
