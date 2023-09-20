@@ -13,7 +13,7 @@ export const newTask = async (req, res, next) => {
 
 		res.status(201).json({
 			success: true,
-			message: "Task added successfully",
+			message: "Task added Successfully",
 		});
 	} catch (error) {
 		next(error);
@@ -37,7 +37,7 @@ export const getMyTask = async (req, res, next) => {
 
 export const updateTask = async (req, res, next) => {
 	try {
-		const task = await Task.findById(req.params._id);
+		const task = await Task.findById(req.params.id);
 
 		if (!task) return next(new ErrorHandler("Task not found", 404));
 
@@ -46,7 +46,7 @@ export const updateTask = async (req, res, next) => {
 
 		res.status(200).json({
 			success: true,
-			message: "Task updated",
+			message: "Task Updated!",
 		});
 	} catch (error) {
 		next(error);
@@ -55,14 +55,14 @@ export const updateTask = async (req, res, next) => {
 
 export const deleteTask = async (req, res, next) => {
 	try {
-		const task = await Task.findById(req.params._id);
+		const task = await Task.findById(req.params.id);
 
 		if (!task) return next(new ErrorHandler("Task not found", 404));
-
 		await task.deleteOne();
+
 		res.status(200).json({
+			message: "Task Deleted!",
 			success: true,
-			message: "Task deleted",
 		});
 	} catch (error) {
 		next(error);
