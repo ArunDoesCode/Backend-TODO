@@ -37,7 +37,7 @@ export const getMyTask = async (req, res, next) => {
 
 export const updateTask = async (req, res, next) => {
 	try {
-		const task = await Task.findById(req.params.id);
+		const task = await Task.findById(req.params._id);
 
 		if (!task) return next(new ErrorHandler("Task not found", 404));
 
@@ -55,7 +55,7 @@ export const updateTask = async (req, res, next) => {
 
 export const deleteTask = async (req, res, next) => {
 	try {
-		const task = await Task.findById(req.params.id);
+		const task = await Task.findById(req.params._id);
 
 		if (!task) return next(new ErrorHandler("Task not found", 404));
 
